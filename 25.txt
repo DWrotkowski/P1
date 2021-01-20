@@ -1,0 +1,41 @@
+1. SELECT first_name, last_name FROM actor;
+2. SELECT first_name, last_name FROM actor WHERE first_name='John';
+3. SELECT first_name, last_name FROM actor WHERE last_name='Neeson';
+4. SELECT actor_id,first_name, last_name FROM actor WHERE actor_id mod 10 = 0;
+5. SELECT description FROM film WHERE film_id=100;
+6. SELECT title FROM film WHERE rating='R';
+7. SELECT title FROM film WHERE rating!='R';
+8. SELECT title, length FROM film ORDER BY length ASC LIMIT 10 ;
+9. SELECT  MAX(length) FROM film ;
+10. SELECT title FROM film WHERE special_features='Deleted Scenes';
+11. SELECT last_name, count(last_name) FROM actor group by last_name DESC having Count(last_name) = 1;
+12. SELECT  count(last_name) , last_name FROM actor group by last_name having Count(last_name) != 1 ORDER BY count(last_name) DESC ;
+13. SELECT o.last_name, count(c.actor_id) FROM film_actor c JOIN actor o ON c.actor_id=o.actor_id group by o.last_name ORDER BY count(c.actor_id) DESC limit 1 ;
+14. SELECT  last_update FROM film WHERE title = 'ACADEMY DINOSAUR';
+15. select AVG(length) from film;
+
+16. SELECT o.name, SUM(a.length) / COUNT( o.name) AS 'avg'
+ FROM film_category c 
+ INNER JOIN category o ON c.category_id=o.category_id
+ INNER JOIN film a ON c.film_id =  a.film_id
+ GROUP by o.name;
+ 
+
+17.SELECT title FROM film WHERE description Like '%robot%';
+18.SELECT count(title) FROM film WHERE release_year = 2010;
+
+19. SELECT a.title FROM film_category c 
+ INNER JOIN category o ON c.category_id=o.category_id
+ INNER JOIN film a ON c.film_id =  a.film_id
+ where o.name = 'horror';
+ 
+ 20.SELECT first_name, last_name FROM staff Where staff_id = 2;
+ 
+21.SELECT a.title FROM film_actor c 
+ INNER JOIN film a ON c.film_id =  a.film_id 
+ INNER JOIN actor o ON c.actor_id=o.actor_id
+ where o.first_name = 'Fred' AND o.last_name = 'Costner';
+22. SELECT count(country_id) From country;
+23. SELECT name from language Order by name desc;
+24. SELECT first_name, last_name from actor where last_name LIKE '%son' ORDER BY first_name asc;
+25. SELECT o.name, count(c.category_id) FROM film_category c JOIN category o ON c.category_id=o.category_id group by o.name ORDER BY count(c.category_id) DESC limit 1 ;
